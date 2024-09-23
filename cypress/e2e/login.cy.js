@@ -1,19 +1,27 @@
 describe('Scholarship Platform', ()=>{
 
     beforeEach( () =>{
-        cy.visit('http://localhost:3000/')
-//     cy.clock()
-// cy.tick(100)
+      //cy.visit('http://host.docker.internal:3000');
+
+        cy.visit('localhost:3000')
+     //cy.clock()
+ //cy.tick(100)
 
 })
+
+n == 1; // n == 1 for english
+n == 0; // n == 0 for spanish
+
 
 
     it('Login Page Process',()=>{
 
         {
+          
           cy.get('[data-test-id="select-language"]').click()
-        cy.get('[data-test-id="li-en-US-language"]').click()
-        cy.get('[data-test-id="input-login-access-code"]').type('	4c4cbfe')
+        //cy.get('[data-test-id="li-en-US-language"]').click()
+        cy.get('[data-test-id="li-es-ES-language"]').click()
+        cy.get('[data-test-id="input-login-access-code"]').type('c8e55d1')
         cy.get('[data-test-id="btn-handle-acess-code-visibility-login"]').click()
        cy.get('[data-test-id="btn-submit-login"]').click()}
 
@@ -27,22 +35,26 @@ describe('Scholarship Platform', ()=>{
 
       { 
         cy.get('[data-test-id="text-welcome-message"]').should('contain.text', 'Welcome to the online scholarship application form')
+        //cy.get('[data-test-id="text-welcome-message"]').should('contain.text', 'Bienvenido al formulario de solicitud de beca online')
+        //cy.get('#notistack-snackbar > .MuiTypography-root').should('contain.text', 'El solicitante inició sesión')
+        cy.get('#notistack-snackbar > .MuiTypography-root').should('contain.text', 'Applicant logged in')
         cy.get('[data-test-id="btn-get-started-welcome"]').click()
       }
+      
 
 
 
 
 
 
-    cy.get('[ data-test-id="text-Applicant-Logged-in"]').should('contains.text', 'Applicant logged in')
+    //cy.get('[ data-test-id="text-Applicant-Logged-in"]').should('contains.text', 'Applicant logged in')
     
     cy.get('[data-test-id="select-display-personal-document-type"]').click()
     //cy.get('[data-test-id="li-personal-document-type-National identity card"]').click()
     //cy.get('[data-test-id="li-personal-document-type-Passport"]').click()
     //cy.get('[data-test-id="li-personal-document-type-Foreigner's identity card"]').click()
     //cy.get('[data-test-id="li-personal-document-type-RUC"]').click()
-    cy.get('[ data-test-id="text-Applicant-Logged-in"]').should('contains.text', 'Applicant logged in')
+    //cy.get('[ data-test-id="text-Applicant-Logged-in"]').should('contains.text', 'Applicant logged in')
     cy.get('[data-test-id="li-personal-document-type-Other"]').click()
 
     cy.get('[data-test-id="input-personal-document-number"]').type('1563636611')
@@ -58,7 +70,8 @@ describe('Scholarship Platform', ()=>{
 
     cy.get('[data-test-id="input-personal-profession"]').type('Custom Input')
 
-    cy.get('[data-test-id="date-picker-input-personal-birth-date"').type('1230 2001')
+    //cy.get('[data-test-id="date-picker-input-personal-birth-date"').type('1230 2001')
+    cy.get('[data-test-id="date-picker-input-personal-birth-date"').type('3012 2001')
 
     //cy.get('[data-testid="CalendarIcon"]').click()
     //cy.get('[div[id=":rg:-grid-label"]]').invoke('text')
@@ -133,12 +146,14 @@ cy.get('[data-test-id="radio-input-personal-has-children"]').check('true')
 
 cy.get('[data-test-id="btn-continue-personal"]').click()
 
-cy.get('[data-test-id="text-perosalDetailsSavedSucess"]').should('contains.text', 'Your personal details have been saved successfully.')
+//cy.get('[data-test-id="text-perosalDetailsSavedSucess"]').should('contains.text', 'Your personal details have been saved successfully.')
+cy.get('[data-test-id="text-perosalDetailsSavedSucess"]').should('contains.text', 'Sus datos personales se han guardado con éxito.')
 
 
 cy.get("div[class='MuiGrid-root MuiGrid-item MuiGrid-grid-xs-true mui-5ghjdk'] div").should('contain.text', 'Address')
 cy.get('[data-test-id="step-Personal"]').click()
-cy.get('[data-test-id="text-personal-heading"]').should('contains.text', 'Personal data')
+//cy.get('[data-test-id="text-personal-heading"]').should('contains.text', 'Personal data')
+//cy.get('[data-test-id="text-personal-heading"]').should('contains.text', 'Datos personales')
 })
 })
 

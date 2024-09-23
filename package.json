@@ -3,7 +3,11 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node_modules\\.bin\\cypress run",
+    "runtests":"npm run test --",
+    "start": "your_start_command",
+    "cy:run": "concurrently \"npm start\" \"npx cypress run\""
+    
   },
   "author": "",
   "license": "ISC",

@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  web:
+    image: scholarship_interface
+    ports:
+      - "3000:3000"
+      
+  #network:
+    #name: scholarship-application-requests-shared-network
+    #external: true
+
