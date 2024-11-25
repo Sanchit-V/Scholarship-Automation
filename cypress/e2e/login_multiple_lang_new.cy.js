@@ -10,8 +10,16 @@ describe('Scholarship Platform', ()=>{
 
 })
 
-
-const n = 0; // n = 1 for english      // n = 0 for spanish 
+const access_code = '01be28b'
+const n = 1 // n = 1 for english      // n = 0 for spanish 
+const document_number = '1563636611'
+const personal_info = 'Custom Input'
+const country = 'India'
+const state = 'Haryana'
+const city = 'Ambala'
+const nationality = 'India'
+const monthly_income = 300000
+const monthly_expense = 1000
 
 //Will need to update the code manually in individual code(if or else) each time for whole process. 
 
@@ -26,7 +34,7 @@ it('Login Page Process',()=>{
             cy.get('[data-test-id="select-language"]').click()
             cy.get('[data-test-id="li-en-US-language"]').click()
             //cy.get('[data-test-id="li-es-ES-language"]').click()
-            cy.get('[data-test-id="input-login-access-code"]').type('bcf90d3')
+            cy.get('[data-test-id="input-login-access-code"]').type(access_code)
             cy.get('[data-test-id="btn-handle-acess-code-visibility-login"]').click()
            cy.get('[data-test-id="btn-submit-login"]').click()
 
@@ -50,7 +58,7 @@ it('Login Page Process',()=>{
     //cy.get('[ data-test-id="text-Applicant-Logged-in"]').should('contains.text', 'Applicant logged in')
       cy.get('[data-test-id="li-personal-document-type-Other"]').click()
 
-    cy.get('[data-test-id="input-personal-document-number"]').clear().type('1563636611')
+    cy.get('[data-test-id="input-personal-document-number"]').clear().type(document_number)
 
     cy.get('[data-test-id="select-display-personal-marital-status"]').click()
 
@@ -61,7 +69,7 @@ it('Login Page Process',()=>{
     cy.get('[data-test-id="li-personal-marital-status-Separated"]').click()
 
 
-    cy.get('[data-test-id="input-personal-profession"]').clear().type('Custom Input')
+    cy.get('[data-test-id="input-personal-profession"]').clear().type(personal_info)
 
     cy.get('[data-test-id="date-picker-input-personal-birth-date"').type('1230 2001')
     //cy.get('[data-test-id="date-picker-input-personal-birth-date"').type('3012 2001')
@@ -76,53 +84,53 @@ it('Login Page Process',()=>{
     // cy.get('[data-testid="CalendarIcon"]').click()
     // cy.wait('@getCalendarDates')
 
-    cy.get('[data-test-id="autocomplete-personal-birth-country"]').click().type('Ind',{delay:200})
+    cy.get('[data-test-id="autocomplete-personal-birth-country"]').click().type(country,{delay:200})
     cy.get('#combo-box-demo-listbox') // Change this selector to match your autocomplete options
  // Ensure there are options
   .then($options => {
     // Example: Select the first occurrence of the option with text 'Option Text'
-    const optionToSelect = "India";
+    const optionToSelect = country;
     const option = $options.filter((index, el) => Cypress.$(el).text().includes(optionToSelect));
     // Click the desired option
     cy.wrap(option).click();
   });
 
-  cy.get('[data-test-id="autocomplete-input-personal-birth-state"]').click().type('Chand',{delay:200})
+  cy.get('[data-test-id="autocomplete-input-personal-birth-state"]').click().type(state,{delay:200})
     cy.get('#combo-box-demo-listbox') // Change this selector to match your autocomplete options
  // Ensure there are options
   .then($options => {
     // Example: Select the first occurrence of the option with text 'Option Text'
-    const optionToSelect = "Chandigarh";
+    const optionToSelect = state;
     const option = $options.filter((index, el) => Cypress.$(el).text().includes(optionToSelect));
     // Click the desired option
     cy.wrap(option).click();
   });
 
-  cy.get('[data-test-id="autocomplete-input-personal-birth-city"]').click().type('Chand',{delay:200})
+  cy.get('[data-test-id="autocomplete-input-personal-birth-city"]').click().type(city,{delay:200})
     cy.get('#combo-box-demo-listbox') // Change this selector to match your autocomplete options
  // Ensure there are options
   .then($options => {
     // Example: Select the first occurrence of the option with text 'Option Text'
-    const optionToSelect = "Chandigarh";
+    const optionToSelect = city;
     const option = $options.filter((index, el) => Cypress.$(el).text().includes(optionToSelect));
     // Click the desired option
     cy.wrap(option).click();
   });
 
-  cy.get('[data-test-id="autocomplete-input-personal-birth-nationality"]').click().type('Ind',{delay:200})
+  cy.get('[data-test-id="autocomplete-input-personal-birth-nationality"]').click().type(nationality,{delay:200})
     cy.get('#combo-box-demo-listbox') // Change this selector to match your autocomplete options
  // Ensure there are options
   .then($options => {
     // Example: Select the first occurrence of the option with text 'Option Text'
-    const optionToSelect = "India";
+    const optionToSelect = nationality;
     const option = $options.filter((index, el) => Cypress.$(el).text().includes(optionToSelect));
     // Click the desired option
     cy.wrap(option).click();
   });
 
-cy.get('[data-test-id="input-personal-monthly-income"]').type('300000')
+cy.get('[data-test-id="input-personal-monthly-income"]').type(monthly_expense)
 
-cy.get('[data-test-id="input-personal-monthly-expense"]').type('3000')
+cy.get('[data-test-id="input-personal-monthly-expense"]').type(monthly_income)
 
 //cy.get('[data-test-id="radio-input-personal-financially-dependent"]').check('true')
 cy.get('[data-test-id="radio-input-personal-financially-dependent-YES"]').check()
@@ -162,7 +170,7 @@ else{
         cy.get('[data-test-id="select-language"]').click()
         //cy.get('[data-test-id="li-en-US-language"]').click()
         cy.get('[data-test-id="li-es-ES-language"]').click()
-        cy.get('[data-test-id="input-login-access-code"]').type('81e17bc')
+        cy.get('[data-test-id="input-login-access-code"]').type(access_code)
         
         cy.get('[data-test-id="btn-handle-acess-code-visibility-login"]').click()
        cy.get('[data-test-id="btn-submit-login"]').click()
@@ -184,7 +192,7 @@ else{
     //cy.get('[ data-test-id="text-Applicant-Logged-in"]').should('contains.text', 'Applicant logged in')
     cy.get('[data-test-id="li-personal-document-type-Other"]').click()
 
-    cy.get('[data-test-id="input-personal-document-number"]').type('1563636611')
+    cy.get('[data-test-id="input-personal-document-number"]').type(document_number)
 
     cy.get('[data-test-id="select-display-personal-marital-status"]').click()
 
@@ -195,7 +203,7 @@ else{
     cy.get('[data-test-id="li-personal-marital-status-Separated"]').click()
 
 
-    cy.get('[data-test-id="input-personal-profession"]').type('Custom Input')
+    cy.get('[data-test-id="input-personal-profession"]').type(personal_info)
 
     //cy.get('[data-test-id="date-picker-input-personal-birth-date"').type('1230 2001')
     cy.get('[data-test-id="date-picker-input-personal-birth-date"').type('3012 2001')
@@ -210,53 +218,53 @@ else{
     // cy.get('[data-testid="CalendarIcon"]').click()
     // cy.wait('@getCalendarDates')
 
-    cy.get('[data-test-id="autocomplete-personal-birth-country"]').click().type('Ind',{delay:200})
+    cy.get('[data-test-id="autocomplete-personal-birth-country"]').click().type(country,{delay:200})
     cy.get('#combo-box-demo-listbox') // Change this selector to match your autocomplete options
  // Ensure there are options
   .then($options => {
     // Example: Select the first occurrence of the option with text 'Option Text'
-    const optionToSelect = "India";
+    const optionToSelect = country;
     const option = $options.filter((index, el) => Cypress.$(el).text().includes(optionToSelect));
     // Click the desired option
     cy.wrap(option).click();
   });
 
-  cy.get('[data-test-id="autocomplete-input-personal-birth-state"]').click().type('Chand',{delay:200})
+  cy.get('[data-test-id="autocomplete-input-personal-birth-state"]').click().type(state,{delay:200})
     cy.get('#combo-box-demo-listbox') // Change this selector to match your autocomplete options
  // Ensure there are options
   .then($options => {
     // Example: Select the first occurrence of the option with text 'Option Text'
-    const optionToSelect = "Chandigarh";
+    const optionToSelect = state;
     const option = $options.filter((index, el) => Cypress.$(el).text().includes(optionToSelect));
     // Click the desired option
     cy.wrap(option).click();
   });
 
-  cy.get('[data-test-id="autocomplete-input-personal-birth-city"]').click().type('Chand',{delay:200})
+  cy.get('[data-test-id="autocomplete-input-personal-birth-city"]').click().type(city,{delay:200})
     cy.get('#combo-box-demo-listbox') // Change this selector to match your autocomplete options
  // Ensure there are options
   .then($options => {
     // Example: Select the first occurrence of the option with text 'Option Text'
-    const optionToSelect = "Chandigarh";
+    const optionToSelect = city;
     const option = $options.filter((index, el) => Cypress.$(el).text().includes(optionToSelect));
     // Click the desired option
     cy.wrap(option).click();
   });
 
-  cy.get('[data-test-id="autocomplete-input-personal-birth-nationality"]').click().type('Ind',{delay:200})
+  cy.get('[data-test-id="autocomplete-input-personal-birth-nationality"]').click().type(nationality,{delay:200})
     cy.get('#combo-box-demo-listbox') // Change this selector to match your autocomplete options
  // Ensure there are options
   .then($options => {
     // Example: Select the first occurrence of the option with text 'Option Text'
-    const optionToSelect = "India";
+    const optionToSelect = nationality;
     const option = $options.filter((index, el) => Cypress.$(el).text().includes(optionToSelect));
     // Click the desired option
     cy.wrap(option).click();
   });
 
-cy.get('[data-test-id="input-personal-monthly-income"]').type('300000')
+cy.get('[data-test-id="input-personal-monthly-income"]').type(monthly_income)
 
-cy.get('[data-test-id="input-personal-monthly-expense"]').type('3000')
+cy.get('[data-test-id="input-personal-monthly-expense"]').type(monthly_expense)
 
 //cy.get('[data-test-id="radio-input-personal-financially-dependent"]').check('true')
 cy.get('[data-test-id="radio-input-personal-financially-dependent-SI"]').check()
