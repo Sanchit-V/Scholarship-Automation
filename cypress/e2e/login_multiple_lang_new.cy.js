@@ -4,13 +4,14 @@ describe('Scholarship Platform', ()=>{
 
 
         cy.visit('localhost:3000')
+        cy.clearCookies()
          
      //cy.clock()
  //cy.tick(100)
 
 })
 
-const access_code = '01be28b'
+const access_code = '18a446b'
 const n = 1 // n = 1 for english      // n = 0 for spanish 
 const document_number = '1563636611'
 const personal_info = 'Custom Input'
