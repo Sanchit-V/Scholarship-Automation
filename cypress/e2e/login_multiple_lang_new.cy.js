@@ -4,15 +4,15 @@ describe('Scholarship Platform', ()=>{
 
 
         cy.visit('localhost:3000')
-        cy.clearCookies()
+        //cy.clearCookies()
          
      //cy.clock()
  //cy.tick(100)
 
 })
 
-const access_code = '18a446b'
-const n = 1 // n = 1 for english      // n = 0 for spanish 
+const access_code = '3e6e380'
+const n = 0 // n = 1 for english      // n = 0 for spanish 
 const document_number = '1563636611'
 const personal_info = 'Custom Input'
 const country = 'India'
@@ -42,13 +42,33 @@ it('Login Page Process',()=>{
            cy.wait(2000)
         
 
+          
+          try{
+            cy.get('body').then((body)=>{
+              if (body.find('[data-test-id="text-welcome-message"]').length > 0){
+                cy.get('[data-test-id="text-welcome-message"]').should('contain.text', 'Welcome to the online scholarship application form');
+                cy.get('#notistack-snackbar > .MuiTypography-root').should('contain.text', 'Login successful')
+                cy.get('[data-test-id="btn-get-started-welcome"]').click()
+              }
+              else {
+                cy.log('No welcome page encountered.')
+              }
+            })
+          }
 
+          catch (error){
+            cy.log('No as such error, just the user has already encountered the welcome page, previously.')
+          }
+             
+
+            
+          
            
-            cy.get('[data-test-id="text-welcome-message"]').should('contain.text', 'Welcome to the online scholarship application form')
+            //cy.get('[data-test-id="text-welcome-message"]').should('contain.text', 'Welcome to the online scholarship application form')
             //cy.get('[data-test-id="text-welcome-message"]').should('contain.text', 'Bienvenido al formulario de solicitud de beca online')
             //cy.get('#notistack-snackbar > .MuiTypography-root').should('contain.text', 'El solicitante inició sesión')
-            cy.get('#notistack-snackbar > .MuiTypography-root').should('contain.text', 'Login successful')
-            cy.get('[data-test-id="btn-get-started-welcome"]').click()
+            //cy.get('#notistack-snackbar > .MuiTypography-root').should('contain.text', 'Login successful')
+            //cy.get('[data-test-id="btn-get-started-welcome"]').click()
           
 
           cy.get('[data-test-id="select-display-personal-document-type"]').click()
@@ -177,11 +197,30 @@ else{
        cy.get('[data-test-id="btn-submit-login"]').click()
     }
 
+    cy.wait(2000)
+
+    try{
+      cy.get('body').then((body)=>{
+        if (body.find('[data-test-id="text-welcome-message"]').length > 0){
+          cy.get('[data-test-id="text-welcome-message"]').should('contain.text', 'Bienvenido al formulario de solicitud de beca online');
+          cy.get('#notistack-snackbar > .MuiTypography-root').should('contain.text', 'Inicio de sesión correcto')
+          cy.get('[data-test-id="btn-get-started-welcome"]').click()
+        }
+        else {
+          cy.log('No welcome page encountered.')
+        }
+      })
+    }
+
+    catch (error){
+      cy.log('No as such error, just the user has already encountered the welcome page, previously.')
+    }
+
     {
-        cy.get('[data-test-id="text-welcome-message"]').should('contain.text', 'Bienvenido al formulario de solicitud de beca online')
-        cy.get('#notistack-snackbar > .MuiTypography-root').should('contain.text', 'Inicio de sesión correcto')
-        //cy.get('#notistack-snackbar > .MuiTypography-root').should('contain.text', 'Applicant logged in')
-        cy.get('[data-test-id="btn-get-started-welcome"]').click()
+        // cy.get('[data-test-id="text-welcome-message"]').should('contain.text', 'Bienvenido al formulario de solicitud de beca online')
+        // cy.get('#notistack-snackbar > .MuiTypography-root').should('contain.text', 'Inicio de sesión correcto')
+        // cy.get('#notistack-snackbar > .MuiTypography-root').should('contain.text', 'Applicant logged in')
+        // cy.get('[data-test-id="btn-get-started-welcome"]').click()
     }
 
     {
